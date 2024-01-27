@@ -21,13 +21,17 @@ const SignUp = () => {
           name,
           email,
           password,
-        }),
+        }),dasf
       });
       if (!response.ok) {
         const errorData = await response.json();
         setErrorMessage(errorData.message || "Email already exists!!");
         return;
       }
+      const userData = await response.json();
+      console.log("User data:", userData);
+      localStorage.setItem("data-username", userData["name"]);
+      localStorage.setItem("data-email", userData["email"]);
       window.location.href = "/";
 
       // If needed, handle successful sign-up actions here
