@@ -3,7 +3,7 @@ import Magazine_Entry from "./Magazine_Entry";
 
 async function getMagazines() {
   try {
-    const res = await fetch("http://localhost:4000/magazines");
+    const res = await fetch("http://localhost:5000/magazine");
     const data = await res.json();
     console.log("Magazines data:", data); // Add this console log
 

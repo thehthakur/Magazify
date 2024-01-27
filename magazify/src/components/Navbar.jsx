@@ -1,11 +1,24 @@
 "use client";
 import Link from "next/link";
-
+import { useEffect,useState } from "react";
 import { usePathname } from "next/navigation";
 
 
 function Navbar() {
+  const [username, setUsername] = useState('');
   const currentRoute = usePathname();
+  useEffect(() =>{
+    const storedUsername = localStorage.getItem('data-username')
+    // const storedemail = localStorage.getItem('data-email')
+    // const storedphone = localStorage.getItem('data-phone')
+    if (storedUsername){
+        setUsername(storedUsername)
+        // setuserPhone(storedphone)
+        // setuseremail(storedemail)
+    }
+    
+
+},[])
   
   return (
     <nav className="relative py-4 px-6 flex justify-between items-center bg-zinc-200">
@@ -45,13 +58,20 @@ function Navbar() {
         </li>
         {/* ... other menu items ... */}
       </ul>
-
+      {username.length != 0 ?
+      <div className="w-2/12 flex justify-around">
+      <Link
+        href="/signout"
+        className="py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold rounded-xl transition duration-200"
+      >Signout
+      </Link>
+    </div>
+      :
       <div className="w-2/12 flex justify-around">
         <Link
           href="/sign_in"
           className="py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold rounded-xl transition duration-200"
         >
-          Sign In
         </Link>
         <Link
           href="/sign_up"
@@ -59,7 +79,9 @@ function Navbar() {
         >
           Sign Up
         </Link>
-      </div>
+      </div>  
+    }
+      
 
       <div className="navbar-menu relative z-50 hidden">
         {/* ... mobile menu content ... */}
