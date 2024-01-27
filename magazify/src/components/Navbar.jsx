@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 function Navbar() {
   const currentRoute = usePathname();
   return (
-    <nav className="relative py-4 px-6 flex justify-between items-center bg-white">
+    <nav className="relative py-4 px-6 flex justify-between items-center bg-zinc-200">
       <Link href="/" className="text-3xl font-bold leading-none">
         Magazify
       </Link>

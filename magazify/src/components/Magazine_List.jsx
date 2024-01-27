@@ -20,13 +20,13 @@ export default async function MagazineList() {
     console.log("Magazines:", magazines);
 
     return (
-      <>
+      <div className=" mx-auto my-5 w-2/3 pt-10 border-2 drop-shadow-xl">
         <Magazine_Entry mag_arr={magazines} />
 
         {magazines.length === 0 && (
           <p className="text-center">No magazines available</p>
         )}
-      </>
+      </div>
     );
   } catch (error) {
     console.error("Error in MagazineList component:", error);

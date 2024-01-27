@@ -3,7 +3,7 @@ import { Dropdown } from "flowbite-react";
 
 function Filters() {
   return (
-    <div className="flex flex-row">
+    <div className="flex flex-row justify-center mt-5">
       <Dropdown label="Genre" dismissOnClick={false}>
         <Dropdown.Item>Mystery</Dropdown.Item>
         <Dropdown.Item>Speculative</Dropdown.Item>
