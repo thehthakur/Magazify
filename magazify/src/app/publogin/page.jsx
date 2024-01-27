@@ -43,10 +43,10 @@ const SignIn = () => {
   };
 
   return (
-    <form className="flex max-w-md flex-col gap-4" onSubmit={handleSignIn}>
+    <form className="flex max-w-md flex-col gap-4 bg-gray-400 p-6 rounded-md  mx-auto mt-8" onSubmit={handleSignIn}>
       <div>
-        <div className="mb-2 block">
-          <Label htmlFor="email" value="Email" />
+        <div className="mb-2  block">
+          <Label htmlFor="email" value="Name" />
         </div>
         <TextInput
           id="email"
@@ -55,6 +55,7 @@ const SignIn = () => {
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
+          className=''
         />
       </div>
       <div>

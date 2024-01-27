@@ -43,39 +43,42 @@ const SignIn = () => {
   };
 
   return (
-    <form className="flex max-w-md flex-col gap-4" onSubmit={handleSignIn}>
-      <div>
-        <div className="mb-2 block">
-          <Label htmlFor="email" value="Email" />
-        </div>
-        <TextInput
-          id="email"
-          type="email"
-          placeholder="name@flowbite.com"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
+    <form className="flex max-w-md flex-col gap-4 bg-gray-400 p-6 rounded-md mx-auto mt-8" onSubmit={handleSignIn}>
+    <div>
+      <div className="mb-2 block">
+        <Label htmlFor="email" value="Email" />
       </div>
-      <div>
-        <div className="mb-2 block">
-          <Label htmlFor="password" value="Password" />
-        </div>
-        <TextInput
-          id="password"
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
+      <TextInput
+        id="email"
+        type="email"
+        placeholder="name@flowbite.com"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        required
+        // className="bg-white border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      />
+    </div>
+    <div>
+      <div className="mb-2 block">
+        <Label htmlFor="password" value="Password" />
       </div>
-      <p className="error error--hidden">{errorMessage}</p>
-      <div className="flex items-center gap-2">
-        <Checkbox id="remember" />
-        <Label htmlFor="remember">Remember me</Label>
-      </div>
-      <Button type="submit">Log In</Button>
-    </form>
+      <TextInput
+        id="password"
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        required
+        // className="bg-white border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      />
+    </div>
+    <p className="error error--hidden">{errorMessage}</p>
+    <div className="flex items-center gap-2">
+      <Checkbox id="remember" />
+      <Label htmlFor="remember" className="text-gray-500 dark:text-gray-300">Remember me</Label>
+    </div>
+    <Button type="submit" className="">Log In</Button>
+  </form>
+  
   );
 };
 
