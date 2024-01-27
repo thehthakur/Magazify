@@ -1,5 +1,5 @@
 # import flask module
-from flask import Flask, json,request,session
+from flask import Flask, json,request,session,jsonify
 from db import magazine
 from pymongo import MongoClient
 from bson import json_util
@@ -38,5 +38,16 @@ def create_magazine_account():
 def publogin():
    print(request.json)
    return Magazine().login(request.json)
+@app.route('/call_for_submissions', methods=['POST'])
+def call_for_submissions():
+    user = session.get('user')
+
+    # Check if the user is a magazine
+    if user and user.get('role') == 'magazine':
+        publisher_id = user.get('_id')
+        submission_data = request.json
+        return Magazine().call_for_submissions(publisher_id, submission_data)
+    else:
+        return jsonify({"error": "Unauthorized access"}), 401
 if __name__ == '__main__':
     app.run(debug=True)

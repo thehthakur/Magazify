@@ -17,6 +17,7 @@ function Navbar() {
     const storedUsername = localStorage.getItem("data-username");
     // const storedemail = localStorage.getItem('data-email')
     // const storedphone = localStorage.getItem('data-phone')
+
     if (storedUsername) {
       setUsername(storedUsername);
       // setuserPhone(storedphone)
@@ -90,6 +91,12 @@ function Navbar() {
           >
             Signout
           </Link>
+          <Link
+            href="/callforsubmi"
+            className="py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200"
+          >
+            Call for submissions.
+          </Link>
         </div>
       ) : (
         <div className="w-2/12 flex justify-around">
@@ -105,6 +112,7 @@ function Navbar() {
           >
             Sign Up
           </Link>
+          
         </div>
       )}
 
