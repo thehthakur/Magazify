@@ -1,25 +1,22 @@
 "use client";
 import Link from "next/link";
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
-
 function Navbar() {
-  const [username, setUsername] = useState('');
+  const [username, setUsername] = useState("");
   const currentRoute = usePathname();
-  useEffect(() =>{
-    const storedUsername = localStorage.getItem('data-username')
+  useEffect(() => {
+    const storedUsername = localStorage.getItem("data-username");
     // const storedemail = localStorage.getItem('data-email')
     // const storedphone = localStorage.getItem('data-phone')
-    if (storedUsername){
-        setUsername(storedUsername)
-        // setuserPhone(storedphone)
-        // setuseremail(storedemail)
+    if (storedUsername) {
+      setUsername(storedUsername);
+      // setuserPhone(storedphone)
+      // setuseremail(storedemail)
     }
-    
+  }, []);
 
-},[])
-  
   return (
     <nav className="relative py-4 px-6 flex justify-between items-center bg-zinc-200">
       <Link href="/" className="text-3xl font-bold leading-none">
@@ -31,7 +28,14 @@ function Navbar() {
         aria-labelledby="navbar-menu"
       >
         <li>
-          <Link href="/" className={`text-xl ${currentRoute === '/' ? ' text-blue-600 font-bold' : 'text-gray-400 hover:text-gray-500'}`}>
+          <Link
+            href="/"
+            className={`text-xl ${
+              currentRoute === "/"
+                ? " text-blue-600 font-bold"
+                : "text-gray-400 hover:text-gray-500"
+            }`}
+          >
             Home
           </Link>
         </li>
@@ -52,43 +56,49 @@ function Navbar() {
           </svg>
         </li>
         <li>
-          <Link href="/about" className={`text-lg ${currentRoute === '/about' ? 'text-blue-600 font-bold' : 'text-gray-400 hover:text-gray-500'}`}>
+          <Link
+            href="/about"
+            className={`text-lg ${
+              currentRoute === "/about"
+                ? "text-blue-600 font-bold"
+                : "text-gray-400 hover:text-gray-500"
+            }`}
+          >
             About Us
           </Link>
         </li>
         {/* ... other menu items ... */}
       </ul>
-      {username.length != 0 ?
-      <div className="w-2/12 flex justify-around">
-      <Link
-        href="/signout"
-        className="py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold rounded-xl transition duration-200"
-      >Signout
-      </Link>
-    </div>
-      :
-      <div className="w-2/12 flex justify-around">
-        <Link
-          href="/sign_in"
-          className="py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold rounded-xl transition duration-200"
-        >
-        </Link>
-        <Link
-          href="/sign_up"
-          className="py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200"
-        >
-          Sign Up
-        </Link>
-      </div>  
-    }
-      
+      {username.length != 0 ? (
+        <div className="w-2/12 flex justify-around">
+          <Link
+            href="/signout"
+            className="py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold rounded-xl transition duration-200"
+          >
+            Signout
+          </Link>
+        </div>
+      ) : (
+        <div className="w-2/12 flex justify-around">
+          <Link
+            href="/sign_in"
+            className="py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold rounded-xl transition duration-200"
+          >
+            Sign in
+          </Link>
+          <Link
+            href="/sign_up"
+            className="py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200"
+          >
+            Sign Up
+          </Link>
+        </div>
+      )}
 
       <div className="navbar-menu relative z-50 hidden">
         {/* ... mobile menu content ... */}
-
       </div>
     </nav>
-
   );
 }
 
