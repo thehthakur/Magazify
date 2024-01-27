@@ -18,24 +18,28 @@ def main():
     process.start()
 
     
-#     send_data_to_mongodb(output_file)
+    send_data_to_mongodb(output_file)
 
-# def send_data_to_mongodb(output_file):
-#     # Connect to MongoDB (make sure MongoDB is running)
-#     client = MongoClient('mongodb+srv://ddtuser:ddt_password@ddtdb.qz0h58k.mongodb.net/?retryWrites=true&w=majority')
-#     db = client['ddtdb']  # Replace 'your_database_name' with the actual database name
-#     collection = db['magazine']  # Replace 'your_collection_name' with the actual collection name
+def send_data_to_mongodb(output_file):
+    # Connect to MongoDB (make sure MongoDB is running)
+    client = MongoClient('mongodb+srv://ddtuser:ddt_password@ddtdb.qz0h58k.mongodb.net/?retryWrites=true&w=majority')
+    db = client['ddtdb']  # Replace 'your_database_name' with the actual database name
+    collection = db['magazine']  # Replace 'your_collection_name' with the actual collection name
 
-#     # Read the data from the output file and insert each line into MongoDB
-#     with open(output_file, 'r') as file:
-#         for line in file:
-#             try:
-#                 data = json.loads(line)
-#                 collection.insert_one(data)
-#             except json.JSONDecodeError:
-#                 print(f"Skipping invalid JSON line: {line.strip()}")
+    # Read the entire data from the output file
+    with open(output_file, 'r') as file:
+        try:
+            data = json.load(file)
+        except json.JSONDecodeError:
+            print(f"Error loading JSON data from file: {output_file}")
+            return
 
-#     client.close()
+    # Insert all the data into MongoDB
+    if data:
+        collection.insert_many(data)
+
+    client.close()
+
 
 
 if __name__ == '__main__':
