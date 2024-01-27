@@ -1,6 +1,7 @@
 # import flask module
 from flask import Flask, json,request,session
 from db import magazine
+from pymongo import MongoClient
 from bson import json_util
 from datetime import datetime as dt 
 from flask_cors import CORS 

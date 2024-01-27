@@ -10,9 +10,7 @@ export default function Magazine_Entry({ mag_arr }) {
         <Table.Head>
           <Table.HeadCell>Magazine Name</Table.HeadCell>
           <Table.HeadCell>Genre</Table.HeadCell>
-          <Table.HeadCell>Fees</Table.HeadCell>
-          <Table.HeadCell>Rating</Table.HeadCell>
-          <Table.HeadCell>Number of Monthly Readers</Table.HeadCell>
+          <Table.HeadCell>Guideline</Table.HeadCell>
           <Table.HeadCell>Deadline</Table.HeadCell>
         </Table.Head>
 
@@ -23,9 +21,7 @@ export default function Magazine_Entry({ mag_arr }) {
                 {magazine.name}
               </Table.Cell>
               <Table.Cell>{magazine.genre.join(' ')}</Table.Cell>
-              <Table.Cell>{magazine.fees}</Table.Cell>
-              <Table.Cell>{magazine.rating}</Table.Cell>
-              <Table.Cell>{magazine.avg_no_of_readers}</Table.Cell>
+              <Table.Cell>{magazine.guideline}</Table.Cell>
               <Table.Cell>{magazine.deadline}</Table.Cell>
             </Table.Row>
           ))}
