@@ -34,6 +34,7 @@ class User:
 
   
   def signout(self):
+    
     session.clear()
     return redirect('/')
   

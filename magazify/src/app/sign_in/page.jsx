@@ -36,7 +36,7 @@ const SignIn = () => {
       // If needed, handle successful sign-in actions here
 
       // Redirect to the homepage
-      // window.location.href = '/'; // Replace '/' with your actual homepage path
+      window.location.href = '/'; // Replace '/' with your actual homepage path
     } catch (error) {
       console.error("Error during sign-in:", error);
     }
