@@ -13,8 +13,11 @@ class User:
 
   def signup(self):
     print(request.form)
+<<<<<<< HEAD
 
     # Create the user object
+=======
+>>>>>>> main
     user = {
       "_id": uuid.uuid4().hex,
       "name": request.form.get('name'),
