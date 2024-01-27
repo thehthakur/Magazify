@@ -10,3 +10,5 @@ We introduce our product, named Magazify, after Magazine and simplify that helps
   <li> User Authentication to protect data from intrusion</li>
   <li>Different accounts for magazines seeking direct calls for submissions.</li>
 </ul>
+# Motivation
+Writing is the art of non-verbal communication, it is this objective, to which we dedicate all our efforts.
