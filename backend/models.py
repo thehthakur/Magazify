@@ -52,7 +52,12 @@ class User:
     return jsonify({ "error": "Invalid login credentials" }), 401
 class Magazine:
     # ... (existing code)
-
+    def start_session(self, user):
+        session['logged_in'] = True
+        session['user'] = user
+        print(jsonify(user))
+        return jsonify(user),200
+     
     def create_magazine_account(self, magazine_data):
         print(magazine_account)
         smagazine = {
@@ -72,7 +77,21 @@ class Magazine:
         magazine_exists = magazine_account.find_one({"name": smagazine['name']})
 
         if magazine_exists:
-            return jsonify({"error": "Magazine name already in use"}), 400
+            return self.start_session(smagazine)
         else:
             magazine_account.insert_one(smagazine)
             return jsonify({"message": "Magazine account created successfully"}), 200
+    def login(self,user_data):
+
+        user = magazine_account.find_one({
+            "name": user_data.get('name')
+        })
+        print(user)
+        if user and pbkdf2_sha256.verify(user_data.get('password'), user['password']):
+          return self.start_session(user)
+          
+        return jsonify({ "error": "Invalid login credentials" }), 401
+    
+       
+
+       

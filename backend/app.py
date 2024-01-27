@@ -34,6 +34,9 @@ def magazines():
 @app.route('/create_magazine_account', methods=['POST'])
 def create_magazine_account():
   return Magazine().create_magazine_account(request.json)
-
+@app.route('/publogin',methods=['POST'])
+def publogin():
+   print(request.json)
+   return Magazine().login(request.json)
 if __name__ == '__main__':
     app.run(debug=True)
