@@ -5,7 +5,7 @@ from pymongo import MongoClient
 from bson import json_util
 from datetime import datetime as dt 
 from flask_cors import CORS 
-from models import User
+from models import User,Magazine
 
 app = Flask(__name__) 
 app.secret_key = 'ddt_ddt_ddt'
@@ -31,8 +31,9 @@ def login():
 def magazines():
     result = magazine.find({})
     return json.loads(json_util.dumps(result))
-
-
+@app.route('/create_magazine_account', methods=['POST'])
+def create_magazine_account():
+  return Magazine().create_magazine_account(request.json)
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request, session, redirect
 from passlib.hash import pbkdf2_sha256
+from db import magazine_account
 from db import users
 import uuid
 
@@ -48,3 +49,29 @@ class User:
       return self.start_session(user)
     
     return jsonify({ "error": "Invalid login credentials" }), 401
+class Magazine:
+    # ... (existing code)
+
+    def create_magazine_account(self, magazine_data):
+        print(magazine_account)
+        smagazine = {
+            "_id": uuid.uuid4().hex,
+            "name": magazine_data.get('name'),
+            "genre": magazine_data.get('genre'),
+            "guideline": magazine_data.get('guideline'),
+            "deadline": magazine_data.get('deadline'),
+            # Remove "email" field
+            "password": magazine_data.get('password'),
+            # Add other fields as needed
+        }
+        # Encrypt the password
+        smagazine['password'] = pbkdf2_sha256.encrypt(smagazine['password'])
+
+        # Check for existing magazine with the same name
+        magazine_exists = magazine_account.find_one({"name": smagazine['name']})
+
+        if magazine_exists:
+            return jsonify({"error": "Magazine name already in use"}), 400
+        else:
+            magazine_account.insert_one(smagazine)
+            return jsonify({"message": "Magazine account created successfully"}), 200

@@ -21,7 +21,7 @@ const SignUp = () => {
           name,
           email,
           password,
-        }),
+        }),dasf
       });
       if (!response.ok) {
         const errorData = await response.json();
