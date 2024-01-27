@@ -7,5 +7,4 @@ We introduce our product, named Magazify, after Magazine and simplify that helps
 <ul>
   <li> User Authentication to protect data from intrusion</li>
   <li>Different accounts for magazines seeking direct calls for submissions.</li>
-  <li></li>
 </ul>
