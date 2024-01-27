@@ -46,6 +46,11 @@ const CreateMagazineAccount = () => {
             setErrorMessage(errorData.message || "Email already exists!!");
             return;
           }
+          const userData = await response.json();
+          console.log("User data:", userData);
+          localStorage.setItem("data-username", userData["name"]);
+        //   localStorage.setItem("data-email", userData["email"]);
+          localStorage.setItem('type','magazine')
           window.location.href = "/";
     
           // If needed, handle successful sign-up actions here
@@ -61,54 +66,69 @@ const CreateMagazineAccount = () => {
   };
 
   return (
-    <div>
-      <h1>Create Magazine Account</h1>
-      <label>
-        Magazine Name
-        <input
-          name="name"
-          value={magazineData.name}
-          onChange={handleInputChange}
-        />
-      </label>
-      <label>
-        Genre
-        <input
-          name="genre"
-          value={magazineData.genre}
-          onChange={handleInputChange}
-        />
-      </label>
-      <label>
-        Guideline
-        <input
-          name="guideline"
-          value={magazineData.guideline}
-          onChange={handleInputChange}
-        />
-      </label>
-      <label>
-        Deadline
-        <input
-          name="deadline"
-          value={magazineData.deadline}
-          onChange={handleInputChange}
-        />
-      </label>
-      <label>
-        Password
-        <input
-          type="password"
-          name="password"
-          value={magazineData.password}
-          onChange={handleInputChange}
-        />
-      </label>
-      <checkbox>
-        I agree to the terms and conditions
-      </checkbox>
-      <button onClick={handleCreateAccount}>Create Account</button>
-    </div>
+    <div className="flex max-w-md flex-col gap-4 bg-gray-400 p-6 rounded-md mx-auto mt-8">
+  {/* <h1 className="text-2xl font-bold text-white mb-4">Create Magazine Account</h1> */}
+  <label className="flex flex-col mb-4">
+    <span className="text-white">Magazine Name</span>
+    <input
+      name="name"
+      value={magazineData.name}
+      onChange={handleInputChange}
+      className="bg-white p-2 rounded-md border border-gray-300 focus:ring-primary-500 focus:border-primary-500 text-black"
+    />
+  </label>
+  <label className="flex flex-col mb-4">
+    <span className="text-white">Genre</span>
+    <input
+      name="genre"
+      value={magazineData.genre}
+      onChange={handleInputChange}
+      className="bg-white p-2 rounded-md border border-gray-300 focus:ring-primary-500 focus:border-primary-500 text-black"
+    />
+  </label>
+  <label className="flex flex-col mb-4">
+    <span className="text-white">Guideline</span>
+    <textarea
+    name="guideline"
+    value={magazineData.guideline}
+    onChange={handleInputChange}
+    className="bg-white p-2 rounded-md border border-gray-300 focus:ring-primary-500 focus:border-primary-500 text-black"
+    rows="4" // Set the number of visible text lines
+  />
+  </label>
+  <label className="flex flex-col mb-4">
+    <span className="text-white">Deadline</span>
+    <input
+    type="date"
+    name="deadline"
+    value={magazineData.deadline}
+    onChange={handleInputChange}
+     // Set the minimum value to the current date
+    className="bg-white p-2 rounded-md border border-gray-300 focus:ring-primary-500 focus:border-primary-500 text-black"
+  />
+  </label>
+  <label className="flex flex-col mb-4">
+    <span className="text-white">Password</span>
+    <input
+      type="password"
+      name="password"
+      value={magazineData.password}
+      onChange={handleInputChange}
+      className="bg-white p-2 rounded-md border border-gray-300 focus:ring-primary-500 focus:border-primary-500 text-black"
+    />
+  </label>
+  <div className="flex items-center gap-2">
+    <input type="checkbox" className="h-4 w-4 border border-gray-300 rounded bg-white focus:ring-3 focus:ring-primary-300" />
+    <span className="text-sm text-gray-500">I agree to the terms and conditions</span>
+  </div>
+  <Button
+    onClick={handleCreateAccount}
+    className="bg-primary-600 text-white hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-4"
+  >
+    Create Account
+  </Button>
+</div>
+
   );
 };
 

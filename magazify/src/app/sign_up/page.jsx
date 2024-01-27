@@ -42,8 +42,9 @@ const SignUp = () => {
   };
 
   return (
-    <form className="card max-w-md" name="signup_form" onSubmit={handleSignUp}>
-      <h1 className="center">Create an Account</h1>
+    <form className="flex max-w-md flex-col gap-4 bg-gray-400 p-6 rounded-md mx-auto mt-8" onSubmit={handleSignUp}>
+    
+      {/* <h1 className="center">Create an Account</h1> */}
       <div>
         <div className="mb-2 block">
           <Label htmlFor="name" value="Name" />

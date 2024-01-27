@@ -79,7 +79,7 @@ function Navbar() {
           <Link href="/pubaccreate" className={`text-lg ${currentRoute === '/pubaccreate' ? 'text-blue-600 font-bold' : 'text-gray-400 hover:text-gray-500'}`}>Create a Magazine account</Link>
         </li>
         <li>
-          <Link href="/publogin" className={`text-lg ${currentRoute === '/pubaclogin' ? 'text-blue-600 font-bold' : 'text-gray-400 hover:text-gray-500'}`}>Publisher Login</Link>
+          <Link href="/publogin" className={`text-lg ${currentRoute === '/publogin' ? 'text-blue-600 font-bold' : 'text-gray-400 hover:text-gray-500'}`}>Publisher Login</Link>
         </li>
         {/* ... other menu items ... */}
       </ul>
