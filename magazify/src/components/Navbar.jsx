@@ -4,7 +4,11 @@ import Link from "next/link";
 const Navbar = () => {
   return (
     <div>
-        Hi, navbar
+      <ul>
+        <li>
+          <Link href='magazine'>Magazines</Link>
+        </li>
+      </ul>
     </div>
   );
 };
