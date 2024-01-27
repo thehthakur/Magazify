@@ -1,0 +1,239 @@
+{
+    "magazines": [
+        {
+            "id": "1",
+            "name": "TechWorld",
+            "avg_no_of_readers": 50000,
+            "genre": [
+                "Technology",
+                "Mystery",
+                "Fiction"
+            ],
+            "fees": 10.99,
+            "rating": 8.12,
+            "deadline": "2024-12-31"
+        },
+        {
+            "id": "2",
+            "name": "Traveler's Choice",
+            "avg_no_of_readers": 75000,
+            "genre": [
+                "Travel"
+            ],
+            "fees": 12.99,
+            "rating": 7.95,
+            "deadline": "2024-11-30"
+        },
+        {
+            "id": "3",
+            "name": "Health Digest",
+            "genre": [
+                "Health"
+            ],
+            "fees": 8.99,
+            "rating": 7.25,
+            "deadline": "2024-10-31"
+        },
+        {
+            "id": "4",
+            "name": "Science Spectacle",
+            "avg_no_of_readers": 60000,
+            "genre": [
+                "Science",
+                "Education"
+            ],
+            "fees": 11.99,
+            "rating": 8.45,
+            "deadline": "2024-09-30"
+        },
+        {
+            "id": "5",
+            "name": "Business Insights",
+            "avg_no_of_readers": 45000,
+            "genre": [
+                "Business",
+                "Finance"
+            ],
+            "fees": 9.99,
+            "rating": 7.88,
+            "deadline": "2024-08-31"
+        },
+        {
+            "id": "6",
+            "name": "Sports Gazette",
+            "avg_no_of_readers": 70000,
+            "genre": [
+                "Sports"
+            ],
+            "fees": 10.49,
+            "rating": 8.02,
+            "deadline": "2024-07-31"
+        },
+        {
+            "id": "7",
+            "name": "Fashion Forward",
+            "avg_no_of_readers": 55000,
+            "genre": [
+                "Fashion",
+                "Lifestyle"
+            ],
+            "fees": 11.49,
+            "rating": 8.75,
+            "deadline": "2024-06-30"
+        },
+        {
+            "id": "8",
+            "name": "Cooking Chronicles",
+            "avg_no_of_readers": 80000,
+            "genre": [
+                "Food",
+                "Cooking"
+            ],
+            "fees": 13.99,
+            "rating": 9.10,
+            "deadline": "2024-05-31"
+        },
+        {
+            "id": "9",
+            "name": "Artistic Expression",
+            "avg_no_of_readers": 48000,
+            "genre": [
+                "Art",
+                "Culture"
+            ],
+            "fees": 9.79,
+            "rating": 7.68,
+            "deadline": "2024-04-30"
+        },
+        {
+            "id": "10",
+            "name": "Nature Nourishment",
+            "avg_no_of_readers": 72000,
+            "genre": [
+                "Nature",
+                "Environment"
+            ],
+            "fees": 12.29,
+            "rating": 8.93,
+            "deadline": "2024-03-31"
+        },
+        {
+            "id": "11",
+            "name": "History Highlights",
+            "avg_no_of_readers": 52000,
+            "genre": [
+                "History"
+            ],
+            "fees": 10.19,
+            "rating": 7.40,
+            "deadline": "2024-02-29"
+        },
+        {
+            "id": "12",
+            "name": "Music Melodies",
+            "avg_no_of_readers": 67000,
+            "genre": [
+                "Music",
+                "Entertainment"
+            ],
+            "fees": 11.79,
+            "rating": 8.34,
+            "deadline": "2024-01-31"
+        },
+        {
+            "id": "13",
+            "name": "Automotive Adventure",
+            "avg_no_of_readers": 58000,
+            "genre": [
+                "Automotive"
+            ],
+            "fees": 10.89,
+            "rating": 7.78,
+            "deadline": "2023-12-31"
+        },
+        {
+            "id": "14",
+            "name": "Home Harmony",
+            "avg_no_of_readers": 69000,
+            "genre": [
+                "Home",
+                "Lifestyle"
+            ],
+            "fees": 12.49,
+            "rating": 8.56,
+            "deadline": "2023-11-30"
+        },
+        {
+            "id": "15",
+            "name": "Mindful Living",
+            "avg_no_of_readers": 51000,
+            "genre": [
+                "Wellness",
+                "Self-Help"
+            ],
+            "fees": 10.59,
+            "rating": 7.95,
+            "deadline": "2023-10-31"
+        },
+        {
+            "id": "16",
+            "name": "Pets Paradise",
+            "avg_no_of_readers": 64000,
+            "genre": [
+                "Pets",
+                "Animal Care"
+            ],
+            "fees": 11.09,
+            "rating": 8.20,
+            "deadline": "2023-09-30"
+        },
+        {
+            "id": "17",
+            "name": "Political Perspectives",
+            "avg_no_of_readers": 59000,
+            "genre": [
+                "Politics",
+                "Current Affairs"
+            ],
+            "fees": 10.69,
+            "rating": 7.85,
+            "deadline": "2023-08-31"
+        },
+        {
+            "id": "18",
+            "name": "Teen Trends",
+            "avg_no_of_readers": 73000,
+            "genre": [
+                "Teen",
+                "Youth Culture"
+            ],
+            "fees": 12.79,
+            "rating": 8.45,
+            "deadline": "2023-07-31"
+        },
+        {
+            "id": "19",
+            "name": "Mystical Musings",
+            "avg_no_of_readers": 54000,
+            "genre": [
+                "Spirituality",
+                "Mystery"
+            ],
+            "fees": 10.39,
+            "rating": 7.70,
+            "deadline": "2023-06-30"
+        },
+        {
+            "id": "20",
+            "name": "Gardening Gazette",
+            "avg_no_of_readers": 66000,
+            "genre": [
+                "Gardening",
+                "Home"
+            ],
+            "fees": 11.39,
+            "rating": 8.05,
+            "deadline": "2023-05-31"
+        }
+    ]
+}
