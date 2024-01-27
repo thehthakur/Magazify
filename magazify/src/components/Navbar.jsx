@@ -12,7 +12,7 @@ function Navbar() {
   return (
     <nav className="relative py-4 px-6 flex justify-between items-center bg-white">
       <Link href="/" className="text-3xl font-bold leading-none">
-        <img src="/logo.png" alt="logo" className="absolute top-0 bottom-0 h-full" />
+        <img src="/favicon.png" alt="logo" className="absolute top-2 bottom-0 h-10" />
       </Link>
 
       <div className="lg:hidden">
