@@ -1,28 +1,39 @@
 import scrapy
 from scrapy.spiders import CrawlSpider, Rule
 from scrapy.linkextractors import LinkExtractor
+from scrapy_splash import SplashRequest
 
 class CrawlingSpider(CrawlSpider):
     name = "secondcrawler"
-    allowed_domains = ["gulmohurquarterly.com", "thebombayreview.com",'https://www.pw.org']
+    allowed_domains = ["gulmohurquarterly.com", "thebombayreview.com", 'pw.org']
     start_urls = ["https://www.pw.org/literary_magazines?field_genres_value=All&taxonomy_vocabulary_20_tid=All&reading_period_status=All&items_per_page=All&fee=All&unsolicited=All&payment=All"]
 
     rules = (
-         Rule(LinkExtractor(allow=('/submission-guidelines','/publication-policy-copyright/','www.pw.org/')), callback='parse_item', follow=True),
+        Rule(LinkExtractor(allow=('/submission-guidelines', '/publication-policy-copyright/', '/www.pw.org/')), callback='parse_item', follow=True),
     )
-    
+
+    def start_requests(self):
+        for url in self.start_urls:
+            yield SplashRequest(url, self.parse_item, args={'wait': 2}, endpoint='render.html')
 
     def parse_item(self, response):
-        # Use XPath to target the paragraph with submission deadlines
-       
-        submission_deadline_word=response.xpath('/html/body/div[1]/div[2]/div/div[1]/div/div[4]/div[3]/div/ul/li/div[4]/span[2]/span').get()
-       
-        if submission_deadline_word:
-            yield{
-                "submission_deadline": submission_deadline_word.strip(),
-                "url": response.xpath('/html/body/div[1]/div[2]/div/div[1]/div/div[4]/div[3]/div/ul/li/div[2]/h2/a').get()
+        # Use XPath to target the list of submission deadlines
+        submission_deadline_words = response.xpath('/html/body/div/div/div/div/div/div/div/div/ul/li/div/span/span/span[2]/text()').getall()
+
+        # Use XPath to target the list of URLs
+        submission_deadline_imageurls = response.xpath('/html/body/div/div/div/div/div/div/div/div/ul/li/div/div/a/div/img/@data-src').getall()
+        names=response.xpath('/html/body/div/div/div/div/div/div/div/div/ul/li/div/h2/a/text()').getall()
+        guidelines=response.xpath('/html/body/div/div/div/div/div/div/div/div/ul/li/div/div/p/text()').getall()
+        for deadline_word, url,name,guideline in zip(submission_deadline_words, submission_deadline_imageurls,names,guidelines):
+            yield {
+                "name": name.strip(),
+                "submission_deadline": deadline_word.strip(),
+                "imageurl": response.urljoin(url.strip()),
+                "basicguidelines":guideline.strip()
+                
             }
-        if not submission_deadline_word:
+
+        if not submission_deadline_words:
             print("Submission deadline paragraph not found on this page.")
             print("DEADLINE TEXT NOT FOUND CURRENTLY")
 

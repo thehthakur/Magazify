@@ -14,19 +14,14 @@ class CrawlingSpider(CrawlSpider):
 
     def parse_item(self, response):
         # Use XPath to target the paragraph with submission deadlines
-        submission_deadline_paragraph = response.xpath('//*[@id="section-5fbb824b53875"]/div[2]/div/div/div/strong[5]/text()').get()
-        submission_deadline_word=response.xpath('//*[@id="content"]/div/div[4]/div[3]/div/ul/li[1]/div[4]').get()
-        if submission_deadline_paragraph:
-            # Yield a dictionary with the extracted information
-            yield {
-                "submission_deadline": submission_deadline_paragraph.strip(),
-                "url": response.url,
-            }
-        elif submission_deadline_word:
+        submission_deadline_paragraphs = response.xpath('//*[@id="section-5fbb824b53875"]/div[2]/div/div/div/text()').getall()
+
+        for deadline_para in submission_deadline_paragraphs:
             yield{
-                "submission_deadline": submission_deadline_word.strip(),
-                "url": response.xpath('//*[@id="content"]/div/div[4]/div[3]/div/ul/li[1]/div[3]/div/a').get()
+                "name": "Gulumuhur Quarterly",
+                "deadline":deadline_para
             }
+
         else:
             print("Submission deadline paragraph not found on this page.")
             print("DEADLINE TEXT NOT FOUND CURRENTLY")
