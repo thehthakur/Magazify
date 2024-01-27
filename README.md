@@ -2,6 +2,7 @@
 Our Dotslash 7.0 Project
 ## Objective: Build an assistant for publishing in magazines.
 In the competitive modern era, a budding writer needs to find the most appropriate magazine for publishing his writeup. In doing so, he needs to navigate through multiple websites, looking out for submission deadlines, genre accepted and the magazine most suitable to him.
+### How does this fall under automation? <u>We are attempting to automate the process of getting an article published in a magazine</u>, from the perspective of a budding writer.
 <br>
 Until Now.
 <br>
