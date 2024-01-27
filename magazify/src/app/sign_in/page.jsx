@@ -29,8 +29,8 @@ const SignIn = () => {
       const userData = await response.json();
       console.log('User data:', userData);
       // // console.log(data)
-      sessionStorage.setItem('data-username',userData['name']);
-      sessionStorage.setItem('data-email',userData['email']  )
+      localStorage.setItem('data-username',userData['name']);
+      localStorage.setItem('data-email',userData['email']  )
       // console.log(data)
     
 
