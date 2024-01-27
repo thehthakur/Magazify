@@ -1,11 +1,12 @@
-import scrapy
 from scrapy.spiders import CrawlSpider, Rule
 from scrapy.linkextractors import LinkExtractor
+import html
 from scrapy_splash import SplashRequest
+import re
 
 class CrawlingSpider(CrawlSpider):
     name = "secondcrawler"
-    allowed_domains = ["gulmohurquarterly.com", "thebombayreview.com", 'pw.org']
+    allowed_domains = ["gulmohurquarterly.com", "thebombayreview.com", 'https://www.pw.org/literary_magazines']
     start_urls = ["https://www.pw.org/literary_magazines?field_genres_value=All&taxonomy_vocabulary_20_tid=All&reading_period_status=All&items_per_page=All&fee=All&unsolicited=All&payment=All"]
 
     rules = (
@@ -30,15 +31,24 @@ class CrawlingSpider(CrawlSpider):
         # Use XPath to target the list of URLs
         submission_deadline_imageurls = response.xpath('/html/body/div/div/div/div/div/div/div/div/ul/li/div/div/a/div/img/@data-src').getall()
         names=response.xpath('/html/body/div/div/div/div/div/div/div/div/ul/li/div/h2/a/text()').getall()
+
         guidelines=response.xpath('/html/body/div/div/div/div/div/div/div/div/ul/li/div/div/p/text()').getall()
-        for deadline_word, url,name,guideline in zip(submission_deadline_words, submission_deadline_imageurls,names,guidelines):
-            yield {
-                "name": name.strip(),
-                "submission_deadline": deadline_word.strip(),
-                "imageurl": response.urljoin(url.strip()),
-                "basicguidelines":guideline.strip()
-                
-            }
+        genres = response.xpath('/html/body/div[1]/div[2]/div/div[1]/div/div[4]/div[3]/div/ul/li/div[5]/span[2]').getall()
+        
+        for deadline_word, url, name, guideline, genres_list in zip(submission_deadline_words, submission_deadline_imageurls, names, guidelines, genres):
+          pattern = re.compile(r'<a href="/literary_magazines\?field_genres_value=(.*?)">.*?</a>', re.IGNORECASE)
+          genres = pattern.findall(genres_list)
+          decoded_genres = [html.unescape(genre.replace('%20', ' ')) for genre in genres]
+          
+          yield {
+        "name": name.strip(),
+        "submission_deadline": deadline_word.strip(),
+        "imageurl": response.urljoin(url.strip()),
+        "basicguidelines": guideline.strip(),
+        "genres": decoded_genres  # Store genres as a list
+
+        }
+
 
         if not submission_deadline_words:
             print("Submission deadline paragraph not found on this page.")
@@ -65,5 +75,3 @@ class CrawlingSpider(CrawlSpider):
 #             print(submission_deadline)
 #         else:
 #             print("CSS sikhao mujhe, kya tag dalu")
-#         # Optionally, follow links to other relevant pages
-       
