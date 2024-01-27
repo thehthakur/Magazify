@@ -4,6 +4,7 @@ import Magazine_Entry from "@/components/Magazine_Entry";
 
 import Link from "next/link";
 
+
 export default function Home() {
   return (
     <>
@@ -13,8 +14,9 @@ export default function Home() {
           <button className="btn-primary">View Tickets</button>
         </Link>
       </div>
-
+      
       <Magazine_Entry />
+
     </>
   );
 }

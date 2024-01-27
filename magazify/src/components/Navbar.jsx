@@ -1,13 +1,27 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+import { useState ,useEffect} from "react";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-
+  const [username, setUsername] = useState('');
   const toggle = () => {
     setIsOpen(!isOpen);
   };
+  const storedUsername = sessionStorage.getItem('data-username');
+  useEffect(() =>{
+    const storedUsername = sessionStorage.getItem('data-username')
+    // const storedemail = localStorage.getItem('data-email')
+    // const storedphone = localStorage.getItem('data-phone')
+    if (storedUsername){
+        setUsername(storedUsername)
+        // setuserPhone(storedphone)
+        // setuseremail(storedemail)
+    }
+    console.log(username)
+
+},[])
+
 
   return (
     <nav className="relative py-4 px-6 flex justify-between items-center bg-white">

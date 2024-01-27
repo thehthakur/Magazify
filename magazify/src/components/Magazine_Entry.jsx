@@ -22,17 +22,17 @@ const Magazine_Entry = () => {
     <div>
       <h1>Magazines</h1>
       <ul>
-        {magazines.map((magazine) => (
-          <li key={magazine._id.$oid}>
-            <strong>Name:</strong> {magazine.name},{' '}
-            <strong>Avg Readers:</strong> {magazine.avg_no_of_readers},{' '}
-            <strong>Genre:</strong> {magazine.genre.join(', ')},{' '}
-            <strong>Fees:</strong> {magazine.fees},{' '}
-            <strong>Rating:</strong> {magazine.rating},{' '}
-            <strong>Deadline:</strong>{' '}
-            {new Date(magazine.deadline.$date).toLocaleDateString()}
-          </li>
-        ))}
+        {/* {magazines.map((magazine) => (
+          // <li key={magazine._id.$oid}>
+          //   <strong>Name:</strong> {magazine.name},{' '}
+          //   <strong>Avg Readers:</strong> {magazine.avg_no_of_readers},{' '}
+          //   <strong>Genre:</strong> {magazine.genre.join(', ')},{' '}
+          //   <strong>Fees:</strong> {magazine.fees},{' '}
+          //   <strong>Rating:</strong> {magazine.rating},{' '}
+          //   <strong>Deadline:</strong>{' '}
+          //   {new Date(magazine.deadline.$date).toLocaleDateString()}
+          // </li>
+        ))} */}
       </ul>
     </div>
   );
