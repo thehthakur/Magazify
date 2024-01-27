@@ -14,11 +14,11 @@ function Navbar() {
       </Link>
 
       <ul
-        className={`hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6`}
+        className={`hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:items-center lg:w-auto lg:space-x-6`}
         aria-labelledby="navbar-menu"
       >
         <li>
-          <Link href="/" className={`text-sm ${currentRoute === '/' ? 'text-blue-600 font-bold' : 'text-gray-400 hover:text-gray-500'}`}>
+          <Link href="/" className={`text-xl ${currentRoute === '/' ? ' text-blue-600 font-bold' : 'text-gray-400 hover:text-gray-500'}`}>
             Home
           </Link>
         </li>
@@ -39,14 +39,14 @@ function Navbar() {
           </svg>
         </li>
         <li>
-          <Link href="/about" className={`text-sm ${currentRoute === '/about' ? 'text-blue-600 font-bold' : 'text-gray-400 hover:text-gray-500'}`}>
+          <Link href="/about" className={`text-lg ${currentRoute === '/about' ? 'text-blue-600 font-bold' : 'text-gray-400 hover:text-gray-500'}`}>
             About Us
           </Link>
         </li>
         {/* ... other menu items ... */}
       </ul>
 
-      <div className="hidden lg:block">
+      <div className="w-2/12 flex justify-around">
         <Link
           href="/sign_in"
           className="py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold rounded-xl transition duration-200"
