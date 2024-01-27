@@ -6,6 +6,13 @@ import { usePathname } from "next/navigation";
 function Navbar() {
   const [username, setUsername] = useState("");
   const currentRoute = usePathname();
+  
+  const handlesignout = async () => {
+    localStorage.removeItem('data-username');
+    localStorage.removeItem('data-email');
+    setUsername(''); // or an appropriate initial value
+    // redirect('/');
+  };
   useEffect(() => {
     const storedUsername = localStorage.getItem("data-username");
     // const storedemail = localStorage.getItem('data-email')
@@ -71,8 +78,8 @@ function Navbar() {
       </ul>
       {username.length != 0 ? (
         <div className="w-2/12 flex justify-around">
-          <Link
-            href="/signout"
+          <Link href='/'
+            onClick={handlesignout}
             className="py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold rounded-xl transition duration-200"
           >
             Signout
