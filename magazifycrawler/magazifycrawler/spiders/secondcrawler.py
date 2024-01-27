@@ -11,7 +11,14 @@ class CrawlingSpider(CrawlSpider):
     rules = (
         Rule(LinkExtractor(allow=('/submission-guidelines', '/publication-policy-copyright/', '/www.pw.org/')), callback='parse_item', follow=True),
     )
+    custom_settings={
+        'FEEDS' :{
+            'output.json':{
+                'format':'json'
+            }
+        }
 
+    }
     def start_requests(self):
         for url in self.start_urls:
             yield SplashRequest(url, self.parse_item, args={'wait': 2}, endpoint='render.html')

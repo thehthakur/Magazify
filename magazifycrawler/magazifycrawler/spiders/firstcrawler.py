@@ -6,7 +6,14 @@ class CrawlingSpider(CrawlSpider):
     name = "mycrawler"
     allowed_domains = ["gulmohurquarterly.com", "thebombayreview.com",'https://www.pw.org']
     start_urls = ["https://www.gulmohurquarterly.com/submission-guidelines"]
+    custom_settings={
+        'FEEDS' :{
+            'output.json':{
+                'format':'json'
+            }
+        }
 
+    }
     rules = (
          Rule(LinkExtractor(allow=('/submission-guidelines','/publication-policy-copyright/','www.pw.org/')), callback='parse_item', follow=True),
     )
