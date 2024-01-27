@@ -5,7 +5,6 @@ async function getMagazines() {
   try {
     const res = await fetch("http://localhost:5000/magazine");
     const data = await res.json();
-    console.log("Magazines data:", data); // Add this console log
 
     return data;
   } catch (error) {
@@ -17,10 +16,9 @@ async function getMagazines() {
 export default async function MagazineList() {
   try {
     const magazines = await getMagazines();
-    console.log("Magazines:", magazines);
 
     return (
-      <div className=" mx-auto my-5 w-2/3 pt-10 border-2 rounded-md drop-shadow-xl">
+      <div className=" mx-auto my-5 w-3/4 pt-10 border-2 rounded-md drop-shadow-xl">
         <Magazine_Entry mag_arr={magazines} />
 
         {magazines.length === 0 && (
