@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+
 import { usePathname } from "next/navigation";
 
 
@@ -61,8 +62,10 @@ function Navbar() {
 
       <div className="navbar-menu relative z-50 hidden">
         {/* ... mobile menu content ... */}
+
       </div>
     </nav>
+
   );
 }
 

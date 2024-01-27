@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Table } from "flowbite-react";
@@ -30,6 +31,7 @@ export default function Magazine_Entry({ mag_arr }) {
           ))}
         </Table.Body>
       </Table>
+
     </div>
   );
 }
