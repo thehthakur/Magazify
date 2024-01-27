@@ -1,41 +1,37 @@
-'use client';
-import React,{useState,useEffect} from 'react';
 
-const Magazine_Entry = () => {
-  const [magazines, setMagazines] = useState([]);
+"use client";
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('http://127.0.0.1:5000/magazine');
-        const data = await response.json();
-        setMagazines(data);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
+import { Table } from "flowbite-react";
 
-    fetchData();
-  }, []);
-  
+export default function Magazine_Entry({ mag_arr }) {
   return (
-    <div>
-      <h1>Magazines</h1>
-      <ul>
-        {/* {magazines.map((magazine) => (
-          // <li key={magazine._id.$oid}>
-          //   <strong>Name:</strong> {magazine.name},{' '}
-          //   <strong>Avg Readers:</strong> {magazine.avg_no_of_readers},{' '}
-          //   <strong>Genre:</strong> {magazine.genre.join(', ')},{' '}
-          //   <strong>Fees:</strong> {magazine.fees},{' '}
-          //   <strong>Rating:</strong> {magazine.rating},{' '}
-          //   <strong>Deadline:</strong>{' '}
-          //   {new Date(magazine.deadline.$date).toLocaleDateString()}
-          // </li>
-        ))} */}
-      </ul>
+    <div className="overflow-x-auto">
+      <Table hoverable>
+        <Table.Head>
+          <Table.HeadCell>Magazine Name</Table.HeadCell>
+          <Table.HeadCell>Genre</Table.HeadCell>
+          <Table.HeadCell>Fees</Table.HeadCell>
+          <Table.HeadCell>Rating</Table.HeadCell>
+          <Table.HeadCell>Number of Monthly Readers</Table.HeadCell>
+          <Table.HeadCell>Deadline</Table.HeadCell>
+        </Table.Head>
+
+        <Table.Body className="divide-y">
+          {mag_arr.map((magazine) => (
+            <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
+              <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+                {magazine.name}
+              </Table.Cell>
+              <Table.Cell>{magazine.genre.join(' ')}</Table.Cell>
+              <Table.Cell>{magazine.fees}</Table.Cell>
+              <Table.Cell>{magazine.rating}</Table.Cell>
+              <Table.Cell>{magazine.avg_no_of_readers}</Table.Cell>
+              <Table.Cell>{magazine.deadline}</Table.Cell>
+            </Table.Row>
+          ))}
+        </Table.Body>
+      </Table>
+
     </div>
   );
-};
-
-export default Magazine_Entry;
+}

@@ -27,6 +27,7 @@
         {
             "id": "3",
             "name": "Health Digest",
+            "avg_no_of_readers": 72000,
             "genre": [
                 "Health"
             ],

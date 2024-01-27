@@ -10,7 +10,7 @@ class User:
     session['logged_in'] = True
     session['user'] = user
     print(jsonify(user))
-    return user,200
+    return jsonify(user),200
 
   def signup(self,user_data):
     print(request.form)

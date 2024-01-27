@@ -1,3 +1,6 @@
+import { Table } from "flowbite-react";
+import Magazine_Entry from "./Magazine_Entry";
+
 async function getMagazines() {
   try {
     const res = await fetch("http://localhost:4000/magazines");
@@ -14,20 +17,16 @@ async function getMagazines() {
 export default async function MagazineList() {
   try {
     const magazines = await getMagazines();
-    console.log("Magazines:", magazines); // Add this console log
+    console.log("Magazines:", magazines);
 
     return (
-      <>
-        {magazines.map((magazine) => (
-          <div key={magazine.id} className="border-2 border-red-300">
-            <h3>{magazine.name}</h3>
-            <h2>{magazine.avg_no_of_readers}</h2>
-          </div>
-        ))}
+      <div className=" mx-auto my-5 w-2/3 pt-10 border-2 drop-shadow-xl">
+        <Magazine_Entry mag_arr={magazines} />
+
         {magazines.length === 0 && (
           <p className="text-center">No magazines available</p>
         )}
-      </>
+      </div>
     );
   } catch (error) {
     console.error("Error in MagazineList component:", error);
