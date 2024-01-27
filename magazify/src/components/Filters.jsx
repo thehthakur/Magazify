@@ -1,5 +1,6 @@
 "use client";
 import { Dropdown } from "flowbite-react";
+import { Datepicker } from "flowbite-react";
 
 function Filters() {
   return (
@@ -12,20 +13,7 @@ function Filters() {
         <Dropdown.Item>Translation</Dropdown.Item>
       </Dropdown>
 
-      <Dropdown label="Deadline" dismissOnClick={false}>
-        <Dropdown.Item>Jan</Dropdown.Item>
-        <Dropdown.Item>Feb</Dropdown.Item>
-        <Dropdown.Item>March</Dropdown.Item>
-        <Dropdown.Item>April</Dropdown.Item>
-        <Dropdown.Item>May</Dropdown.Item>
-        <Dropdown.Item>June</Dropdown.Item>
-        <Dropdown.Item>July</Dropdown.Item>
-        <Dropdown.Item>August</Dropdown.Item>
-        <Dropdown.Item>September</Dropdown.Item>
-        <Dropdown.Item>October</Dropdown.Item>
-        <Dropdown.Item>November</Dropdown.Item>
-        <Dropdown.Item>December</Dropdown.Item>
-      </Dropdown>
+      <Datepicker minDate={new Date()} />
     </div>
   );
 }

@@ -7,7 +7,7 @@ from datetime import datetime as dt
 from flask_cors import CORS 
 from models import User
 
-app = Flask(__name__)
+app = Flask(__name__) 
 app.secret_key = 'ddt_ddt_ddt'
 CORS(app)
 
