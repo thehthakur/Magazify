@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request, session, redirect
 from passlib.hash import pbkdf2_sha256
-from db import magazine_account
+from db import magazine_account,publisher_posts
 from db import users
 import uuid
 
@@ -81,6 +81,12 @@ class Magazine:
         else:
             magazine_account.insert_one(smagazine)
             return jsonify({"message": "Magazine account created successfully"}), 200
+    def call_for_submissions(self,submission_data):
+        if submission_data['type'] == 'magazine':
+            post = {'publisher':submission_data['user'],'title':submission_data['title'],'content':submission_data['content']}
+            publisher_posts.insert_one( post )
+            return jsonify(submission_data),200
+        else : return jsonify({"you have to be a publisher to be able to post"}),401
     def login(self,user_data):
 
         user = magazine_account.find_one({

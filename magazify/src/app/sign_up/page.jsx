@@ -32,6 +32,7 @@ const SignUp = () => {
       console.log("User data:", userData);
       localStorage.setItem("data-username", userData["name"]);
       localStorage.setItem("data-email", userData["email"]);
+      localStorage.setItem("type", 'writer');
       window.location.href = "/";
 
       // If needed, handle successful sign-up actions here
