@@ -5,7 +5,7 @@ import { Button, Checkbox, Label, TextInput } from "flowbite-react";
 
 const CreateMagazineAccount = () => {
   const [errorMessage,setErrorMessage]=useState('')
-    const [magazineData, setMagazineData] = useState({
+  const [magazineData, setMagazineData] = useState({
     id:"",
     name: "",
     genre: "",

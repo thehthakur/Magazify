@@ -1,11 +1,11 @@
 # import flask module
 from flask import Flask, json,request,session,jsonify
-from db import magazine,publisher_posts
+from db import magazine,articles
 from pymongo import MongoClient
 from bson import json_util
 from datetime import datetime as dt 
 from flask_cors import CORS 
-from models import User,Magazine,articles
+from models import User,Magazine
 
 app = Flask(__name__) 
 app.secret_key = 'ddt_ddt_ddt'
@@ -51,15 +51,15 @@ def call_for_submissions():
         # return jsonify({"error": "Unauthorized access"}), 401
 @app.route('/submit_article', methods=['POST'])
 def submit_article():
-    user_id = session.get('user').get('_id')
+    # user_id = session.get('user').get('_id')
     article_data = request.json
 
     # Save the submitted article to the database (adjust as needed)
     article = {
-        "user_id": user_id,
-        "title": article_data.get('title'),
-        "content": article_data.get('content'),
-        'magazine_name':article_data.get('magazine_name')
+        "user":article_data.get('user'),
+        "magazinename": article_data.get('magazinename'),
+        "Name": article_data.get('Name'),
+        'article':article_data.get('article')
         # Add other fields as needed
     }
 
