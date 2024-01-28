@@ -15,7 +15,7 @@ export default function Magazine_Entry({ filteredList }) {
           key={magazine.id} // Assuming you have an "id" property for each magazine
         >
           <Table.Cell className="whitespace-nowrap font-medium text-black-900 dark:text-white">
-            <Link href="/form">{magazine.name}</Link>
+            <Link href="/form" className=" text-blue-400 underline">{magazine.name}</Link>
           </Table.Cell>
 
           <Table.Cell>{magazine.genres.join(" ")}</Table.Cell>
