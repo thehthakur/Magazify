@@ -4,27 +4,29 @@ import { Table } from "flowbite-react";
 import { useFilters } from "./FiltersContext";
 import Magazine_Entry from "./Magazine_Entry";
 
-export default function MagazineList({ mag_arr }) {
+export default function MagazineList({ magazines }) {
   const { selectedGenre, selectedDate } = useFilters();
+
   const formatDate = (dateString) => {
     const fullDateString = dateString + " 2024";
     return new Date(fullDateString);
   };
 
-  const [filteredList, setFilteredList] = useState(mag_arr);
+  const [filteredList, setFilteredList] = useState([]);
 
   useEffect(() => {
-    const filteredList = mag_arr.filter((magazine) => {
-      const genreMatches = magazine.genres.includes(selectedGenre);
-      // Check if the magazine deadline is before the selected date
-      const deadlineBeforeSelectedDate =
-        formatDate(magazine.submission_deadline).toLocaleDateString() <
-        selectedDate;
-      // Return true if both conditions are met
-      return genreMatches && deadlineBeforeSelectedDate;
+    // Filter the magazines based on selectedGenre and selectedDate
+    const filteredMagazines = magazines.filter((magazine) => {
+      const formattedSelectedDate = new Date(selectedDate).toLocaleDateString();
+      const formattedMagazineDate = formatDate(magazine.submission_deadline).toLocaleDateString()
+      console.log(magazine.genres.includes(selectedGenre))
+      return (
+        magazine.genres.includes(selectedGenre) &&
+        formattedMagazineDate > formattedSelectedDate
+      );
     });
-    setFilteredList(filteredList);
-  }, [mag_arr, selectedGenre, selectedDate]);
+    setFilteredList(filteredMagazines);
+  }, [selectedGenre]);
 
   return (
     <div className=" mx-auto my-5 w-3/4 pt-10 border-2 rounded-md drop-shadow-xl">
@@ -38,14 +40,12 @@ export default function MagazineList({ mag_arr }) {
           </Table.Head>
 
           <Table.Body className="divide-y">
-
             <Magazine_Entry filteredList={filteredList} />
-
           </Table.Body>
         </Table>
       </div>
 
-      {mag_arr.length === 0 && (
+      {magazines.length === 0 && (
         <p className="text-center">No magazines available</p>
       )}
     </div>

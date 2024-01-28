@@ -9,7 +9,6 @@ export default async function Home() {
     try {
       const res = await fetch("http://localhost:5000/magazine");
       const data = await res.json();
-
       return data;
     } catch (error) {
       console.error("Error fetching magazines:", error);
@@ -28,7 +27,7 @@ export default async function Home() {
             <Date_Filter />
           </div>
 
-          <MagazineList mag_arr={magazines} />
+          <MagazineList magazines={magazines} />
         </>
       </FiltersProvider>
     );
