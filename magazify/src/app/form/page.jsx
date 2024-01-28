@@ -7,12 +7,12 @@ export default function Submission_Form() {
     <form className="flex max-w-md flex-col gap-4 mx-auto my-12">
       <div>
         <div className="mb-2 block">
-          <Label htmlFor="email1" value="Your Name" />
+          <Label htmlFor="name" value="Your Name" />
         </div>
         <TextInput
-          id="email1"
-          type="email"
-          placeholder="name@flowbite.com"
+          id="name"
+          type="name"
+          placeholder="your name"
           required
         />
       </div>

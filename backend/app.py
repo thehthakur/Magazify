@@ -1,11 +1,11 @@
 # import flask module
 from flask import Flask, json,request,session,jsonify
-from db import magazine,publisher_posts
+from db import magazine,publisher_posts,articles
 from pymongo import MongoClient
 from bson import json_util
 from datetime import datetime as dt 
 from flask_cors import CORS 
-from models import User,Magazine,articles
+from models import User,Magazine
 
 app = Flask(__name__) 
 app.secret_key = 'ddt_ddt_ddt'
