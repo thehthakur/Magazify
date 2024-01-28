@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { Table } from "flowbite-react";
 import { useFilters } from "./FiltersContext";
+import Link from "next/link";
 
 export default function MagazineList({ mag_arr }) {
   const { selectedGenre, selectedDate } = useFilters();
@@ -15,11 +16,11 @@ export default function MagazineList({ mag_arr }) {
   useEffect(() => {
     const filteredList = mag_arr.filter((magazine) => {
       const genreMatches = magazine.genres.includes(selectedGenre);
-
       // Check if the magazine deadline is before the selected date
       const deadlineBeforeSelectedDate =
         formatDate(magazine.submission_deadline).toLocaleDateString() <
         selectedDate;
+        console.log(deadlineBeforeSelectedDate)
       // Return true if both conditions are met
       return genreMatches && deadlineBeforeSelectedDate;
     });
@@ -44,7 +45,7 @@ export default function MagazineList({ mag_arr }) {
                 key={magazine.id} // Assuming you have an "id" property for each magazine
               >
                 <Table.Cell className="whitespace-nowrap font-medium text-black-900 dark:text-white">
-                  {magazine.name}
+                  <Link href="/form">{magazine.name}</Link>
                 </Table.Cell>
 
                 <Table.Cell>{magazine.genres.join(" ")}</Table.Cell>
