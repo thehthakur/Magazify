@@ -17,6 +17,7 @@ function Navbar() {
     const storedUsername = localStorage.getItem("data-username");
     // const storedemail = localStorage.getItem('data-email')
     // const storedphone = localStorage.getItem('data-phone')
+
     if (storedUsername) {
       setUsername(storedUsername);
       // setuserPhone(storedphone)
@@ -77,6 +78,9 @@ function Navbar() {
         <li>
           <Link href="/pubaccreate" className={`text-lg ${currentRoute === '/pubaccreate' ? 'text-blue-600 font-bold' : 'text-gray-400 hover:text-gray-500'}`}>Create a Magazine account</Link>
         </li>
+        <li>
+          <Link href="/publogin" className={`text-lg ${currentRoute === '/publogin' ? 'text-blue-600 font-bold' : 'text-gray-400 hover:text-gray-500'}`}>Publisher Login</Link>
+        </li>
         {/* ... other menu items ... */}
       </ul>
       {username.length != 0 ? (
@@ -86,6 +90,12 @@ function Navbar() {
             className="py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold rounded-xl transition duration-200"
           >
             Signout
+          </Link>
+          <Link
+            href="/callforsubmi"
+            className="py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200"
+          >
+            Call for submissions.
           </Link>
         </div>
       ) : (
@@ -102,6 +112,7 @@ function Navbar() {
           >
             Sign Up
           </Link>
+          
         </div>
       )}
 
