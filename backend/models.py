@@ -50,6 +50,7 @@ class User:
       return self.start_session(user)
     
     return jsonify({ "error": "Invalid login credentials" }), 401
+  
 class Magazine:
     # ... (existing code)
     def start_session(self, user):
