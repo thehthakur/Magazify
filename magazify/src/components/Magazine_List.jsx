@@ -1,34 +1,69 @@
+"use client";
+import { useState, useEffect } from "react";
 import { Table } from "flowbite-react";
-import Magazine_Entry from "./Magazine_Entry";
+import { useFilters } from "./FiltersContext";
 
-async function getMagazines() {
-  try {
-    const res = await fetch("http://localhost:5000/magazine");
-    const data = await res.json();
+export default function MagazineList({ mag_arr }) {
+  const { selectedGenre, selectedDate } = useFilters();
+  const formatDate = (dateString) => {
+    const fullDateString = dateString + " 2024";
+    return new Date(fullDateString);
+  };
 
-    return data;
-  } catch (error) {
-    console.error("Error fetching magazines:", error);
-    throw error;
-  }
-}
+  const [filteredList, setFilteredList] = useState(mag_arr);
 
-export default async function MagazineList() {
-  try {
-    const magazines = await getMagazines();
+  useEffect(() => {
+    const filteredList = mag_arr.filter((magazine) => {
+      const genreMatches = magazine.genres.includes(selectedGenre);
 
-    return (
-      <div className=" mx-auto my-5 w-3/4 pt-10 border-2 rounded-md drop-shadow-xl">
-        <Magazine_Entry mag_arr={magazines} />
+      // Check if the magazine deadline is before the selected date
+      const deadlineBeforeSelectedDate =
+        formatDate(magazine.submission_deadline).toLocaleDateString() <
+        selectedDate;
+      // Return true if both conditions are met
+      return genreMatches && deadlineBeforeSelectedDate;
+    });
+    setFilteredList(filteredList);
+  }, [mag_arr, selectedGenre, selectedDate]);
 
-        {magazines.length === 0 && (
-          <p className="text-center">No magazines available</p>
-        )}
+  return (
+    <div className=" mx-auto my-5 w-3/4 pt-10 border-2 rounded-md drop-shadow-xl">
+      <div className="overflow-x-auto">
+        <Table hoverable>
+          <Table.Head>
+            <Table.HeadCell>Magazine Name</Table.HeadCell>
+            <Table.HeadCell>Genre</Table.HeadCell>
+            <Table.HeadCell>Guideline</Table.HeadCell>
+            <Table.HeadCell>Deadline</Table.HeadCell>
+          </Table.Head>
+
+          <Table.Body className="divide-y">
+            {filteredList.map((magazine) => (
+              <Table.Row
+                className="bg-white dark:border-gray-700 dark:bg-gray-800"
+                key={magazine.id} // Assuming you have an "id" property for each magazine
+              >
+                <Table.Cell className="whitespace-nowrap font-medium text-black-900 dark:text-white">
+                  {magazine.name}
+                </Table.Cell>
+
+                <Table.Cell>{magazine.genres.join(" ")}</Table.Cell>
+                <Table.Cell>{magazine.basicguidelines}</Table.Cell>
+
+                <Table.Cell>
+                  {formatDate(
+                    magazine.submission_deadline
+                  ).toLocaleDateString()}
+                </Table.Cell>
+              </Table.Row>
+            ))}
+          </Table.Body>
+        </Table>
       </div>
-    );
-  } catch (error) {
-    console.error("Error in MagazineList component:", error);
-    // Handle the error or render an error message as needed
-    return <p className="text-center">Error loading magazines</p>;
-  }
+
+      {mag_arr.length === 0 && (
+        <p className="text-center">No magazines available</p>
+      )}
+    </div>
+  );
 }
