@@ -54,6 +54,7 @@ console.log("Creating magazine account:", magazineData);
     <form className="flex max-w-md flex-col gap-4 mx-auto my-12">
       <div>
         <div className="mb-2 block">
+
           <Label htmlFor="Name" value="Your Name" />
         </div>
         <TextInput
@@ -63,6 +64,7 @@ console.log("Creating magazine account:", magazineData);
           value={name}
           onChange={(e) => setName(e.target.value)}
           // value={submissionData.Name}
+
           required
         />
       </div>

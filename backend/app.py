@@ -1,6 +1,8 @@
 # import flask module
 from flask import Flask, json,request,session,jsonify
-from db import magazine,articles
+
+from db import magazine,publisher_posts,articles
+
 from pymongo import MongoClient
 from bson import json_util
 from datetime import datetime as dt 

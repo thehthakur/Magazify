@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { Table } from "flowbite-react";
 import { useFilters } from "./FiltersContext";
-import Link from "next/link";
+import Magazine_Entry from "./Magazine_Entry";
 
 export default function MagazineList({ mag_arr }) {
   const { selectedGenre, selectedDate } = useFilters();
@@ -20,7 +20,6 @@ export default function MagazineList({ mag_arr }) {
       const deadlineBeforeSelectedDate =
         formatDate(magazine.submission_deadline).toLocaleDateString() <
         selectedDate;
-        console.log(deadlineBeforeSelectedDate)
       // Return true if both conditions are met
       return genreMatches && deadlineBeforeSelectedDate;
     });
@@ -39,25 +38,9 @@ export default function MagazineList({ mag_arr }) {
           </Table.Head>
 
           <Table.Body className="divide-y">
-            {filteredList.map((magazine) => (
-              <Table.Row
-                className="bg-white dark:border-gray-700 dark:bg-gray-800"
-                key={magazine.id} // Assuming you have an "id" property for each magazine
-              >
-                <Table.Cell className="whitespace-nowrap font-medium text-black-900 dark:text-white">
-                <Link href={`/form?name=${magazine.name}`}>{magazine.name}</Link>
-                </Table.Cell>
 
-                <Table.Cell>{magazine.genres.join(" ")}</Table.Cell>
-                <Table.Cell>{magazine.basicguidelines}</Table.Cell>
+            <Magazine_Entry filteredList={filteredList} />
 
-                <Table.Cell>
-                  {formatDate(
-                    magazine.submission_deadline
-                  ).toLocaleDateString()}
-                </Table.Cell>
-              </Table.Row>
-            ))}
           </Table.Body>
         </Table>
       </div>
