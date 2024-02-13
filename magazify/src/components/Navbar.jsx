@@ -97,11 +97,6 @@ function Navbar() {
           >
             Call for submissions.
           </Link>
-          <Link
-          href="/showresponse" className="py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200"
-          >
-            See responses here.
-          </Link>
         </div>
       ) : (
         <div className="w-2/12 flex justify-around">
